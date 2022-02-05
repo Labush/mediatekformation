@@ -15,6 +15,20 @@
                         <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
                     </form>
                 </th>
+                
+                <th>
+                    Niveau
+                    
+                    <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'niveau'}) }}">
+                        <div class="form-group mr-1 mb-2">
+                            <input type="text" class="sm" name="recherche">
+                        </div>
+                        <input type="hidden" name="_token" value="{{ csrf_token('filtre_niveau') }}">
+                        <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+                    </form>
+                </th>
+                
+                
                 <th class="text-center align-top" scope="col">
                     <a href="{{ path('formations.sort', {champ:'publishedAt', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
@@ -32,6 +46,13 @@
                             {{ formation.title }}
                         </h5>
                     </td>
+                    
+                    <td>
+                        <h5 class="text-info">
+                            {{ formation.niveau }}
+                        </h5>
+                    </td>
+                    
                     <td class="text-center">
                         {{ formation.publishedatstring }}
                     </td>
@@ -46,4 +67,5 @@
             {% endfor %}
         </tbody>
     </table>
+            
 {% endblock %}

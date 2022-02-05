@@ -5,6 +5,8 @@ namespace App\Entity;
 use DateTime;
 use DateTimeInterface;
 use App\Repository\FormationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,6 +51,11 @@ class Formation
      */
     private $videoId;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $niveau;
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -129,4 +136,17 @@ class Formation
 
         return $this;
     }
+    
+     public function getNiveau(): ?int
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(int $niveau): self
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
 }
